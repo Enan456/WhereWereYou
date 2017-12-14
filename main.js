@@ -1,5 +1,6 @@
 
 function sendEmails() {
+  //initial stuff
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getSheets()[0];
   var sheet = SpreadsheetApp.getActiveSheet();
@@ -13,20 +14,22 @@ function sendEmails() {
   // Fetch values for each row in the Range.
   var data = dataRange.getValues();
     
+  //goes through each row
   for (i in data) {
     
     var row = data[i];
     
+    //fetches id number
     var x = "A" + startRow;
     var data1 = SpreadsheetApp.getActiveSpreadsheet().getRange(x).getValue();
     var emailAddress = data1 + "@students.sd308.org";  // First column
         
-    
+    //fetches period
     var y = "B" + startRow;
     var data2 = SpreadsheetApp.getActiveSpreadsheet().getRange(y).getValue();
     var period =data2;// Second column
     
-    
+    //makes and sends email
     var subject = "Where were you during hour " + period + "?";
     
     var message = "Please respond to this email at your earliest convience with where or with whom you were with during hour:" +period;
